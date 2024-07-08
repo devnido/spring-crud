@@ -14,6 +14,11 @@ public class IsExistsDbValidation implements ConstraintValidator<IsExistsDb, Lon
 
   @Override
   public boolean isValid(Long value, ConstraintValidatorContext context) {
+
+    if (productService == null) {
+      return true;
+    }
+
     return value != null && !productService.existsBySku(value);
   }
 
